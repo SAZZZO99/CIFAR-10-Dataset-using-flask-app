@@ -1,0 +1,78 @@
+#FRONTEND
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>cifar-10 prediction</title>
+    <style>
+    *{
+    font-size:30px;
+    }
+    </style>
+</head>
+<body>
+    <input id="image-selector" type="file">
+    <button id="predict-button">Predict</button>
+    <p style="font-weight:bold">Predictions</p>
+    <p> Airplane: <span id="Airplane-prediction"></span></p>
+    <p> Automobile: <span id="Automobile-prediction"></span></p>
+    <p> Bird: <span id="Bird-prediction"></span></p>
+    <p> Cat: <span id="Cat-prediction"></span></p>
+    <p> Deer: <span id="Deer-prediction"></span></p>
+    <p> Dog: <span id="Dog-prediction"></span></p>
+    <p> Frog: <span id="Frog-prediction"></span></p>
+    <p> Horse: <span id="Horse-prediction"></span></p>
+    <p> Ship: <span id="Ship-prediction"></span></p>
+    <p> Truck: <span id="Truck-prediction"></span></p>
+    <img id="selected-image" src=""/>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        let base64Image;
+        $("#image-selector").change(function(){
+        let reader = new FileReader();
+        reader.onload = function(e){
+            let dataURL = reader.result;
+            $('#selected-image').attr("src",dataURL);
+            base64Image = dataURL.replace('data:image/png;base64,","");
+        }
+        reader.readAsDataURL($("#image-selector")[0].files[0]);
+        $("#Airplane-prediction").text("");
+        $("#Automobile-prediction").text("");
+        $("#Bird-prediction").text("");
+        $("#Cat-prediction").text("");
+        $("#Deer-prediction").text("");
+        $("#Dog-prediction").text("");
+        $("#Frog-prediction").text("");
+        $("#Horse-prediction").text("");
+        $("#Ship-prediction").text("");
+        $("#Truck-prediction").text("");
+
+        });
+
+        $("#predict-button").click(function(event){
+            let message ={
+                image: base64Image
+            }
+            console.log(message);
+            $.post("http://10.0.0.4:5000/predict",JSON.stringify(message), function(response){
+                $.post("#Airplane-prediction").text(response.prediction.Airplane.toFixed(6));
+                $.post("#Automobile-prediction").text(response.prediction.Automobile.toFixed(6));
+                $.post("#Bird-prediction").text(response.prediction.Bird.toFixed(6));
+                $.post("#Cat-prediction").text(response.prediction.Cat.toFixed(6));
+                $.post("#Deer-prediction").text(response.prediction.Deer.toFixed(6));
+                $.post("#Dog-prediction").text(response.prediction.Dog.toFixed(6));
+                $.post("#Frog-prediction").text(response.prediction.Frog.toFixed(6));
+                $.post("#Horse-prediction").text(response.prediction.Horse.toFixed(6));
+                $.post("#Ship-prediction").text(response.prediction.Ship.toFixed(6));
+                $.post("#Truck-prediction").text(response.prediction.Truck.toFixed(6));
+                console.log(response);
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>
