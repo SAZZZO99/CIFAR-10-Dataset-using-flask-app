@@ -3,4 +3,22 @@ Implemented CIFAR-10 and achieved an accuracy of 90.7% on test scores and implem
 
 CIFAR-10  is an established computer-vision dataset used for object recognition. It is a subset of the 80 million tiny images dataset and consists of 60,000 32x32 color images containing one of 10 object classes, with 6000 images per class. 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h3> DEEP LEARNING ARCHITECTURE </h3>
+![Screenshot (344)](https://user-images.githubusercontent.com/45651397/92353589-52d0da80-f0fe-11ea-8b94-df40a531816d.png)
