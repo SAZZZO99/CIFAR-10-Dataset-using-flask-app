@@ -21,4 +21,5 @@ CIFAR-10  is an established computer-vision dataset used for object recognition.
 
 
 <h3> DEEP LEARNING ARCHITECTURE </h3>
-![Screenshot (344)](https://user-images.githubusercontent.com/45651397/92353589-52d0da80-f0fe-11ea-8b94-df40a531816d.png)
+
+![Screenshot (344)](https://user-images.githubusercontent.com/45651397/92354104-4ac56a80-f0ff-11ea-8c3d-d5f574d4f47f.png)
